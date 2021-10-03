@@ -1,17 +1,22 @@
 import styled from "styled-components";
+import media from "styled-media-query"
 
-export const Wrapper = styled.aside`
-  display: flex;
-`
 
 export const Avatar = styled.img`
   border-radius: 50%;
-  height: 6em;
-  width: 6em;
+  height: 5em;
+  margin: 0.5em 0;
+  width: 5em;
+
+  ${media.greaterThan("medium")`
+    height: 10em;
+    width: 10em;
+  `}
 `
 
 export const Details = styled.div`
   display: block;
+  margin: 0.5em;
 `
 
 export const Title = styled.h2`
@@ -19,5 +24,7 @@ export const Title = styled.h2`
 `
 
 export const Description = styled.p`
-  text-align: center;
+  /* text-align: left; */
+  color: #666;
+  font-size: 0.9em;
 `

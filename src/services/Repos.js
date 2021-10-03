@@ -5,8 +5,9 @@ export const getRepos = async (userID) => {
     const url = `/users/`
     const query = userID
     const endpoint = `/repos`
+    const params = `?sort=updated`
 
-    const response = await API.get(url + query + endpoint)  
+    const response = await API.get(url + query + endpoint + params)  
 
     return response.data
 

@@ -7,6 +7,7 @@ import Header from 'components/Header'
 import UserInfo from 'components/UserInfo'
 import Repos from 'components/Repos'
 import Starred from 'components/Starred'
+import TabNavigation from 'components/TabNavigation'
 
 import { getUser } from 'services/User'
 
@@ -19,12 +20,10 @@ function Profile () {
   useEffect(() => {
     async function fetchData() {
       const data = await getUser(userID)
-      console.log(data)
       setUser(data);
+      console.log(data);
     }
-
     fetchData();
- 
   }, []);
 
   return (
@@ -32,12 +31,19 @@ function Profile () {
 
       <Header />
       <ErrorBoundary FallbackComponent={ ErrorFallback }>
-        <UserInfo data={ user } />
 
-        <Suspense fallback={<p>Loading Data...</p>}>
-          <Repos url={ user.login } />
-          <Starred url={ user.login } />  
-        </Suspense>
+        <S.Container>
+          <S.Sidebar>
+            <UserInfo data={ user } />
+          </S.Sidebar>
+
+          <S.Main>
+            <TabNavigation url={ user.login } />
+            {/* <Repos url={ user.login } />
+            <Starred url={ user.login } />  */} 
+          </S.Main>
+
+        </S.Container>
 
       </ErrorBoundary>
 
