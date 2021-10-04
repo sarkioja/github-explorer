@@ -15,7 +15,7 @@ function SearchResults() {
       const fetchData = async () => {
         setIsLoading(true);
         const users = await searchUser(search)
-        console.log(users)
+
         setData(users.items);
         setIsLoading(false);
       }
