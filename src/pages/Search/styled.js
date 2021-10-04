@@ -8,7 +8,6 @@ export const Container = styled.section`
   ${media.greaterThan("medium")`
     align-items: flex-start;
     display: flex;
-    flex-shrink: 0;
     justify-content: flex-start;
     padding: 0 1em;
   `}
@@ -34,11 +33,9 @@ export const Sidebar = styled.aside`
 
 export const Main = styled.main`
   display: block;
-  flex-shrink: 0;
-  padding: 0 0.5em;
+  width: calc(100vw - 2em)!important;
+`
 
-  ${media.greaterThan("medium")`
-    width: 80%;
-  `}
+export const Title = styled.h2`
 
 `

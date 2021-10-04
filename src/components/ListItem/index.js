@@ -4,19 +4,46 @@ import * as S from './styled'
  
 function ListItem(props) {
 
-  const {title, description, date, language, stars, forks, url } = props
+  const {title, description, date, language, stars, forks, url, avatar } = props
 
   return (
     <S.Item>
-      <S.Title>
-        <S.Link href={url} title={description}> 
-          { title } 
-        </S.Link> 
-      </S.Title>
+      { avatar ? (
+        <S.Flex>
+          <S.Link to={url} title={description}> 
+            <S.Avatar src={avatar} />
+          </S.Link>
 
-      <S.Description>
-        { description }
-      </S.Description>
+          <S.DumbDiv>
+          <S.Title>
+              <S.Link to={url} title={description}> 
+                { title } 
+              </S.Link> 
+            </S.Title>
+
+            <S.Description>
+              { description }
+            </S.Description>
+          </S.DumbDiv>
+
+        </S.Flex>
+
+      ) : (
+        <Fragment>
+          <S.Title>
+            <S.ExternalLink href={url} title={description} target="_blank"> 
+              { title } 
+            </S.ExternalLink> 
+          </S.Title>
+          <S.Description>
+            { description }
+          </S.Description>
+        </Fragment>
+      ) }
+
+
+
+
 
       { language ? (
         <S.Text> 
@@ -39,9 +66,12 @@ function ListItem(props) {
         </S.Text>
       ) : null }  
 
-      <S.Text>
-        { date }
-      </S.Text>
+      { date ? (
+        <S.Text>
+          { date }
+        </S.Text>
+      ): null }
+
     </S.Item>
   )
 }

@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 
 const Repos = React.lazy(() => import('components/Repos'));
 const Starred = React.lazy(() => import('components/Starred'));
+import LoadingIcon from 'components/LoadingIcon'
 
 import * as S from './styled'
 
@@ -16,13 +17,13 @@ function TabNavigation(props) {
       </S.List>
 
       <S.Panel>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<LoadingIcon />}>
           <Repos url={ url } />
         </Suspense>
       </S.Panel>
 
       <S.Panel>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<LoadingIcon />}>
           <Starred url={ url } /> 
         </Suspense>
       </S.Panel>

@@ -2,24 +2,30 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-/* import { StateContext } from './state' */
-
+import { StateContext } from './state'
+import Search from './pages/Search';
 import Profile from './pages/Profile';
-//import NotFound from './pages/NotFound';
 
 import './static/styles/index.css';
 
 function AppRouting() {
 
+  const [query, setQuery] = useState('');
+  const [search, setSearch] = useState();
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const value = { query, search, data, isLoading, setQuery, setSearch, setData, setIsLoading };
 
-  return (
-  <Router>
-    <Switch>
-      <Route exact path="/" component={Profile} />
-      <Route path="/:userID" component={Profile} />
-      {/* <Route component={NotFound} /> */}
-    </Switch>
-  </Router>
+
+  return (  
+  <StateContext.Provider value={ value } >
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Search} />
+        <Route path="/:userID" component={Profile} />
+      </Switch>
+    </Router>
+  </StateContext.Provider>
 )}
 
 ReactDOM.render(<AppRouting />, document.getElementById("root"));

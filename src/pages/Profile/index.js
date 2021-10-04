@@ -5,8 +5,6 @@ import { useParams } from "react-router-dom";
 import ErrorFallback from 'components/ErrorFallback'
 import Header from 'components/Header'
 import UserInfo from 'components/UserInfo'
-import Repos from 'components/Repos'
-import Starred from 'components/Starred'
 import TabNavigation from 'components/TabNavigation'
 
 import { getUser } from 'services/User'
@@ -21,7 +19,6 @@ function Profile () {
     async function fetchData() {
       const data = await getUser(userID)
       setUser(data);
-      console.log(data);
     }
     fetchData();
   }, []);
@@ -31,7 +28,6 @@ function Profile () {
 
       <Header />
       <ErrorBoundary FallbackComponent={ ErrorFallback }>
-
         <S.Container>
           <S.Sidebar>
             <UserInfo data={ user } />
@@ -39,15 +35,10 @@ function Profile () {
 
           <S.Main>
             <TabNavigation url={ user.login } />
-            {/* <Repos url={ user.login } />
-            <Starred url={ user.login } />  */} 
           </S.Main>
 
         </S.Container>
-
       </ErrorBoundary>
-
-
     </Fragment>
   )
 }

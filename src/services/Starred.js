@@ -1,8 +1,6 @@
 import API from './api'
 
 export const getStarred = async (userID) => {
-  console.log(userID);
-
   if(!userID) return 
 
   try {

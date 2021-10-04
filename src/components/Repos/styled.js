@@ -5,6 +5,7 @@ import { GitRepoForked } from '@styled-icons/boxicons-regular/GitRepoForked'
 import { Code } from '@styled-icons/bootstrap/Code'
 
 export const List = styled.ul`
+width: 100%;
 `
 
 export const IconStar = styled(Star)`
